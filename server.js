@@ -57,7 +57,14 @@ app.route('/users/:id')
 })
 // UPDATE
 .put((req,res)=>{
-  // User.findByIdAndUpdate()
+  User.findByIdAndUpdate(req.params.id, (err, data) => {
+    if (err) {
+      res.json({
+        success: false,
+        message: err
+      })
+    } 
+  })
 })
 // DELETE
 .delete((req,res)=>{
